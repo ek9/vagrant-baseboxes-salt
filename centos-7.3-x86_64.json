@@ -87,6 +87,7 @@
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
       "scripts/centos-7.3/locale.sh",
+      "scripts/common/saltstack.sh",
       "scripts/centos-7.3/cleanup.sh",
       "scripts/common/minimize.sh"
     ]

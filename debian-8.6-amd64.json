@@ -85,6 +85,7 @@
       "scripts/debian/vmware.sh",
       "scripts/common/vagrant.sh",
       "scripts/common/sshd.sh",
+      "scripts/common/saltstack.sh",
       "scripts/debian/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
