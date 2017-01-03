@@ -12,10 +12,10 @@ baseboxes][0] with [SaltStack][2]. This is a customized and maintained fork of
 
 This is a list of built baseboxes:
 
-    - [ek9/archlinux-salt-x86_64][10] - latest Arch Linux; SaltStack 2016.11.1.
-    - [ek9/centos-7-salt-x86_64][11] - CentOS 7.3; SaltStack 2016.11.1
-    - [ek9/debian-8-salt-amd64][12] - Debian 8.6; SaltStack 2016.11.1
-    - [ek9/openbsd-6-salt-amd64][13] - OpenBSD 6.0; SaltStack 2016.3.1
+- [ek9/archlinux-salt-x86_64][10] - latest Arch Linux; SaltStack 2016.11.1.
+- [ek9/centos-7-salt-x86_64][11] - CentOS 7.3; SaltStack 2016.11.1
+- [ek9/debian-8-salt-amd64][12] - Debian 8.6; SaltStack 2016.11.1
+- [ek9/openbsd-6-salt-amd64][13] - OpenBSD 6.0; SaltStack 2016.3.1
 
 ## Usage
 
@@ -47,13 +47,36 @@ In order to manually build the boxes, clone this repository:
 
     $ git clone https://github.com/ek9/vagrant-baseboxes-salt && cd vagrant-baseboxes-salt
 
-Build a machine image for virtualbox from the template in the repository:
+To build a machine, you will have to pass template file to use to `packer build` command:
+
+- `archlinux-x86_64.json` used to build [Arch Linux][5].
+- `centos-7.3-x86_64.json` used to build [CentOS][6] 7.3
+- `debian-8.6-amd64.json` used to build [Debian][7] 8.6
+- `openbsd-6.0-amd64.json` used to build [OpenBSD][8] 6.0
+
+When building, you can build a box for the following providers (via `-only=`
+argument):
+
+- `virtualbox-iso` used to build [VirtualBox][20] based images.
+- `vmware-iso` used to build [VMWare based][21] images.
+- `qemu` used to build [QEMU][22] based images.
+
+Additionally, you can specify a variable file (via `-var-file file`) which can
+be used to customize some of the build variables:
+
+- `vars/release.json` - release specific variables
+- `vars/development.json` - development specific variables (for testing)
+
+To build a specific VM, use this command:
 
     $ bin/packer build -var-file vars/release.json -only=virtualbox-iso template.json
 
-Once the box is built you can add it to vagrant:
+Once the box is built you will see a `.box` file in the main directory which
+you can add to vagrant under `custom-name` and initialize:
 
-    $ vagrant box add custom-archlinux-x86_64 archlinux-x86_64-virtualbox.box
+    $ vagrant box add custom-name template.box
+    $ vagrant init custom-name
+    $ vagrant up
 
 ## Credits
 
@@ -68,9 +91,15 @@ repository is Copyright (c) 2014 Satoshi Matsumoto.
 [2]: https://www.saltstack.com
 [3]: https://github.com/kaorimatz/packer-templates
 [4]: https://www.vagrantup.com
+[5]: https://www.archlinux.org
+[6]: https://www.centos.org
+[7]: https://www.debian.org
+[8]: https://www.openbsd.org
 [10]: https://atlas.hashicorp.com/ek9/boxes/archlinux-salt-x86_64
 [11]: https://atlas.hashicorp.com/ek9/boxes/centos-7-salt-x86_64
 [12]: https://atlas.hashicorp.com/ek9/boxes/debian-8-salt-amd64
 [13]: https://atlas.hashicorp.com/ek9/boxes/openbsd-6-salt-amd64
-
+[20]: https://www.virtualbox.org
+[21]: https://www.vmware.com
+[22]: http://wiki.qemu.org/Main_Page
 
