@@ -21,7 +21,7 @@ namespace :packer do
   task :validate do
     Pathname.glob('*.json').sort.each do |template|
       puts Rainbow("Validating #{template}...").green
-      unless system "packer validate #{template}"
+      unless system "bin/packer validate #{template}"
         puts Rainbow("#{template} is not a valid packer template").red
         raise "#{template} is not a valid packer template"
       end
@@ -72,7 +72,7 @@ namespace :packer do
       end
     end
 
-    unless system("packer build -var-file=vars/release.json '#{file.path}'")
+    unless system("bin/packer build -var-file=vars/release.json '#{file.path}'")
       puts Rainbow("Failed to release #{slug} to Atlas").red
       raise "Failed to release #{slug} to Atlas"
     end
