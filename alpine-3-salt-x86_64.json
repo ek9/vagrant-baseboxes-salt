@@ -162,7 +162,7 @@
     "iso_checksum": "12bc27aa5758ad642ae3a3973255e785cf6bdec426d68148ed3bf9f682ce80c5",
     "iso_checksum_type": "sha256",
     "memory": "512",
-    "mirror": "https://fr.alpinelinux.org/alpine",
+    "mirror": "http://fr.alpinelinux.org/alpine",
     "ssh_timeout": "60m"
   }
 }
