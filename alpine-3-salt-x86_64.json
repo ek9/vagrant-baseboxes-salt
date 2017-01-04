@@ -1,0 +1,168 @@
+{
+  "builders": [{
+    "type": "qemu",
+    "iso_url": "{{user `mirror`}}/v3.5/releases/x86_64/alpine-virt-3.5.0-x86_64.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-alpine-3-salt-x86_64-{{build_type}}",
+    "vm_name": "packer-alpine-3-salt-x86_64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "30s",
+    "boot_command": [
+      "root<enter><wait>",
+      "ifconfig eth0 up && udhcpc -i eth0<enter><wait>",
+      "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine/answers<enter><wait>",
+      "setup-alpine -f answers<enter><wait5>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "y<enter>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "rc-service sshd stop<enter>",
+      "mount /dev/sda3 /mnt<enter>",
+      "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config<enter>",
+      "umount /mnt<enter>",
+      "reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "root",
+    "ssh_password": "vagrant",
+    "shutdown_command": "/sbin/poweroff",
+    "qemuargs": [
+      ["-m", "{{user `memory`}}"],
+      ["-smp", "{{user `cpus`}}"]
+    ]
+  }, {
+    "type": "virtualbox-iso",
+    "guest_os_type": "Linux26_64",
+    "iso_url": "{{user `mirror`}}/v3.5/releases/x86_64/alpine-virt-3.5.0-x86_64.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-alpine-3-salt-x86_64-{{build_type}}",
+    "vm_name": "packer-alpine-3-salt-x86_64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "30s",
+    "boot_command": [
+      "root<enter><wait>",
+      "ifconfig eth0 up && udhcpc -i eth0<enter><wait>",
+      "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine/answers<enter><wait>",
+      "setup-alpine -f answers<enter><wait5>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "y<enter>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "rc-service sshd stop<enter>",
+      "mount /dev/sda3 /mnt<enter>",
+      "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config<enter>",
+      "umount /mnt<enter>",
+      "reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "root",
+    "ssh_password": "vagrant",
+    "shutdown_command": "/sbin/poweroff",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+      ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpus`}}"]
+    ]
+  }, {
+    "type": "vmware-iso",
+    "guest_os_type": "alpine-64",
+    "iso_url": "{{user `mirror`}}/v3.5/releases/x86_64/alpine-virt-3.5.0-x86_64.iso",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "{{user `iso_checksum_type`}}",
+    "output_directory": "output-alpine-3-salt-x86_64-{{build_type}}",
+    "vm_name": "packer-alpine-3-salt-x86_64",
+    "disk_size": "{{user `disk_size`}}",
+    "headless": "{{user `headless`}}",
+    "http_directory": "http",
+    "boot_wait": "30s",
+
+    "boot_command": [
+      "root<enter><wait>",
+      "ifconfig eth0 up && udhcpc -i eth0<enter><wait>",
+      "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine/answers<enter><wait>",
+      "setup-alpine -f answers<enter><wait5>",
+      "vagrant<enter><wait>",
+      "vagrant<enter><wait>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "y<enter>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "<wait10><wait10><wait10>",
+      "rc-service sshd stop<enter>",
+      "mount /dev/sda3 /mnt<enter>",
+      "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config<enter>",
+      "umount /mnt<enter>",
+      "reboot<enter>"
+    ],
+    "ssh_timeout": "{{user `ssh_timeout`}}",
+    "ssh_username": "root",
+    "ssh_password": "vagrant",
+    "tools_upload_flavor": "linux",
+    "shutdown_command": "/sbin/poweroff",
+    "vmx_data": {
+      "memsize": "{{user `memory`}}",
+      "numvcpus": "{{user `cpus`}}"
+    }
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/alpine/post-install.sh",
+      "scripts/alpine/vagrant.sh",
+      "scripts/common/sshd.sh",
+      "scripts/alpine/saltstack.sh",
+      "scripts/alpine/cleanup.sh",
+      "scripts/common/minimize.sh"
+    ],
+    "override": {
+      "virtualbox-iso": {
+        "execute_command": "/bin/sh '{{.Path}}'"
+      },
+      "qemu": {
+        "execute_command": "/bin/sh '{{.Path}}'"
+      },
+      "vmware-iso": {
+        "execute_command": "/bin/sh '{{.Path}}'"
+      }
+    }
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "compression_level": "{{user `compression_level`}}",
+    "output": "alpine-3-salt-x86_64-{{.Provider}}.box"
+  }],
+  "variables": {
+    "compression_level": "6",
+    "cpus": "1",
+    "disk_size": "40000",
+    "headless": "false",
+    "iso_checksum": "12bc27aa5758ad642ae3a3973255e785cf6bdec426d68148ed3bf9f682ce80c5",
+    "iso_checksum_type": "sha256",
+    "memory": "512",
+    "mirror": "http://fr.alpinelinux.org/alpine",
+    "ssh_timeout": "60m"
+  }
+}
