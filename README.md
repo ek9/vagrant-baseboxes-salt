@@ -15,7 +15,7 @@ This is a list of built baseboxes:
 - [ek9/alpine-3-salt-x86_64][14] - Alpine Linux 3.5.0; SaltStack 2016.11.1
 - [ek9/archlinux-salt-x86_64][10] - latest Arch Linux; SaltStack 2016.11.1
 - [ek9/centos-7-salt-x86_64][11] - CentOS 7.3; SaltStack 2016.11.1
-- [ek9/debian-8-salt-amd64][12] - Debian 8.6; SaltStack 2016.11.1
+- [ek9/debian-8-salt-amd64][12] - Debian 8.7; SaltStack 2016.11.1
 - [ek9/openbsd-6-salt-amd64][13] - OpenBSD 6.0; SaltStack 2016.3.1
 
 ## Usage
@@ -76,7 +76,7 @@ To build a machine, you will have to pass template file to use to `packer build`
 - `alpine-3-salt-x86_64.json` used to build [Alpine Linux][9] 3.5.0.
 - `archlinux-x86_64.json` used to build [Arch Linux][5].
 - `centos-7.3-x86_64.json` used to build [CentOS][6] 7.3
-- `debian-8.6-amd64.json` used to build [Debian][7] 8.6
+- `debian-8.7-amd64.json` used to build [Debian][7] 8.7
 - `openbsd-6.0-amd64.json` used to build [OpenBSD][8] 6.0
 
 When building, you can build a box for the following providers (via `-only=`
