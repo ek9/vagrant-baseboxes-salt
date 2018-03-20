@@ -114,7 +114,7 @@ Original code from [kaorimatz/packer-templates][3] that is part of this
 repository is Copyright (c) 2014 Satoshi Matsumoto.
 
 
-[0]: https://atlas.hashicorp.com/ek9
+[0]: https://app.vagrantup.com/ek9
 [1]: https://www.packer.io
 [2]: https://www.saltstack.com
 [3]: https://github.com/kaorimatz/packer-templates
