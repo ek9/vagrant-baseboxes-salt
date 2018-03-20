@@ -10,7 +10,7 @@ iface eth0 inet dhcp
 DNSOPTS="-d local -n 8.8.8.8 8.8.4.4"
 TIMEZONEOPTS="-z UTC"
 PROXYOPTS="none"
-APKREPOSOPTS="https://dl-cdn.alpinelinux.org/alpine/v3.5/main https://dl-cdn.alpinelinux.org/alpine/edge/community"
+APKREPOSOPTS="http://dl-cdn.alpinelinux.org/alpine/v3.7/main http://dl-cdn.alpinelinux.org/alpine/edge/community"
 SSHDOPTS="-c openssh"
 NTPOPTS="-c openntpd"
 DISKOPTS="-s 0 -m sys /dev/sda"
