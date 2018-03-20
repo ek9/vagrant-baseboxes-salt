@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/ek9/vagrant-baseboxes-salt.svg?style=flat-square)](https://travis-ci.org/ek9/vagrant-baseboxes-salt)
 
-[Vagrant Baseboxes with SaltStack on Atlas][0]
+[Vagrant Baseboxes with SaltStack on VagrantUp.com][0]
 
 This repository contains [packer][1] templates used to build [ek9 vagrant
 baseboxes][0] with [SaltStack][2]. This is a customized and maintained fork of
@@ -124,12 +124,12 @@ repository is Copyright (c) 2014 Satoshi Matsumoto.
 [7]: https://www.debian.org
 [8]: https://www.openbsd.org
 [9]: https://www.alpinelinux.org
-[10]: https://atlas.hashicorp.com/ek9/boxes/archlinux-salt-x86_64
-[11]: https://atlas.hashicorp.com/ek9/boxes/centos-7-salt-x86_64
-[12]: https://atlas.hashicorp.com/ek9/boxes/debian-8-salt-amd64
-[13]: https://atlas.hashicorp.com/ek9/boxes/openbsd-6-salt-amd64
-[14]: https://atlas.hashicorp.com/ek9/boxes/alpine-3-salt-x86_64
-[15]: https://atlas.hashicorp.com/ek9/boxes/debian-9-salt-amd64
+[10]: https://app.vagrantup.com/ek9/boxes/archlinux-salt-x86_64
+[11]: https://app.vagrantup.com/ek9/boxes/centos-7-salt-x86_64
+[12]: https://app.vagrantup.com/ek9/boxes/debian-8-salt-amd64
+[13]: https://app.vagrantup.com/ek9/boxes/openbsd-6-salt-amd64
+[14]: https://app.vagrantup.com/ek9/boxes/alpine-3-salt-x86_64
+[15]: https://app.vagrantup.com/ek9/boxes/debian-9-salt-amd64
 [20]: https://www.virtualbox.org
 [21]: https://www.vmware.com
 [22]: http://wiki.qemu.org/Main_Page
